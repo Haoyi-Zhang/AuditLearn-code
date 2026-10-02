@@ -1,0 +1,70 @@
+{
+  "purpose": "Post-pilot all-dictionary stress test fixed before execution; tests the distinction between prefix debt and outstanding audits without tuning to outcomes",
+  "horizon": 512,
+  "truth_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "seeds": [
+    111,
+    222,
+    333,
+    444
+  ],
+  "algorithms": [
+    "prefix",
+    "intersection",
+    "completed",
+    "plugin",
+    "safe",
+    "known",
+    "product"
+  ],
+  "confidence_delta": 0.05,
+  "curve_stride": 32,
+  "scenarios": [
+    {
+      "name": "outcome-lag-64",
+      "kind": "outcome_dependent",
+      "lag": 64,
+      "description": "Marks with branch/success indicator one return after 64 additional episode boundaries; other launched marks return at the next boundary."
+    },
+    {
+      "name": "single-blocker",
+      "kind": "single_blocker",
+      "description": "The first launched audit of each type is withheld until after the learning horizon; every later launched audit returns at the next boundary. Maximum unreturned count is one per launched type, while chronological prefix debt can grow linearly."
+    }
+  ],
+  "selection": "Same fixed 27-law dictionary, policy class, tie rules, confidence delta, common random worlds and seven methods as the pilot. No result-dependent exclusions or hyperparameter changes.",
+  "retention": "Per-run and 32-episode checkpoint summaries are retained; the deterministic standard-library runner regenerates every episode.",
+  "limits": {
+    "workers": 1,
+    "memory_mib": 3584,
+    "total_experiment_cpu_seconds": 600
+  }
+}

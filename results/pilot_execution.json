@@ -1,0 +1,11 @@
+{
+  "cpu_seconds": 5.672789292,
+  "dictionary_models": 27,
+  "episodes": 129024,
+  "peak_rss_kib": 99244,
+  "policies": 27,
+  "runs": 252,
+  "smoke": false,
+  "wall_seconds": 5.6754912330000025,
+  "workers": 1
+}

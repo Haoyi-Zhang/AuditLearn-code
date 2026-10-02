@@ -1,0 +1,10 @@
+{
+  "cpu_seconds": 0.0052083040000000524,
+  "episodes": 476160,
+  "peak_rss_kib": 95780,
+  "runs": 600,
+  "shard_count": 4,
+  "status": "scale shards merged",
+  "wall_seconds": 0.005214271999989251,
+  "workers": 1
+}

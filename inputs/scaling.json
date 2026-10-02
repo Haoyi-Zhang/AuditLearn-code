@@ -1,0 +1,29 @@
+{
+  "purpose": "Prespecified post-theory sensitivity campaign for horizon growth and saturated outstanding-record envelopes; no configuration is selected from observed outcomes",
+  "horizons": [128, 256, 512, 1024, 2048],
+  "truth_indices": [0, 8, 20],
+  "seeds": [111, 222, 333, 444],
+  "algorithms": ["prefix", "intersection", "completed", "plugin", "known"],
+  "confidence_delta": 0.05,
+  "scenarios": [
+    {
+      "name": "front-blockers-1",
+      "kind": "front_blockers",
+      "blockers": 1,
+      "description": "For each task type, the first launched audit is withheld until after the learning horizon and every later audit returns at the next boundary."
+    },
+    {
+      "name": "front-blockers-4",
+      "kind": "front_blockers",
+      "blockers": 4,
+      "description": "For each task type, the first four launched audits are withheld until after the learning horizon and every later audit returns at the next boundary."
+    }
+  ],
+  "world_reuse": "For each truth and seed, one stream of 2048 worlds is generated; each shorter horizon uses its exact prefix, and every method/scenario at that horizon uses the same prefix.",
+  "retention": "One final row per run with launch counts, exposures, exclusions, and the exact saturated unresolved-mass envelope.",
+  "limits": {
+    "workers": 1,
+    "memory_mib": 3584,
+    "total_experiment_cpu_seconds": 600
+  }
+}

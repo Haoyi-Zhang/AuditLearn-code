@@ -1,0 +1,11 @@
+scenario,blockers,horizon,cells,intersection_minus_prefix_mean,intersection_minus_prefix_median,intersection_better,equal,intersection_worse
+front-blockers-1,1,128,12,-20.609212239583332,0.0,5,7,0
+front-blockers-1,1,256,12,-45.67578125,-3.0439453125,8,4,0
+front-blockers-1,1,512,12,-98.61783854166667,-14.5576171875,8,4,0
+front-blockers-1,1,1024,12,-206.49772135416666,-38.349609375,8,4,0
+front-blockers-1,1,2048,12,-422.66455078125,-86.1650390625,8,4,0
+front-blockers-4,4,128,12,-19.510579427083332,0.0,5,7,0
+front-blockers-4,4,256,12,-43.421223958333336,-1.119140625,7,5,0
+front-blockers-4,4,512,12,-96.09423828125,-11.9619140625,8,4,0
+front-blockers-4,4,1024,12,-204.03759765625,-35.71875,8,4,0
+front-blockers-4,4,2048,12,-420.1238606770833,-81.94921875,8,4,0

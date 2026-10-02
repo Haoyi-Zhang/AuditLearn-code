@@ -1,0 +1,9 @@
+{
+  "completed_exclusion_records": 213,
+  "episode_records": 129024,
+  "intersection_exclusion_records": 0,
+  "prefix_exclusion_records": 0,
+  "reconciled_curve_rows": 4032,
+  "reconciled_runs": 252,
+  "status": "pilot aggregation and curve reconciliation passed"
+}

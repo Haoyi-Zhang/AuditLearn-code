@@ -1,0 +1,132 @@
+{
+  "exact_envelope_rows": 600,
+  "horizons": [
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "pairwise": [
+    {
+      "blockers": 1,
+      "cells": 12,
+      "equal": 7,
+      "horizon": 128,
+      "intersection_better": 5,
+      "intersection_minus_prefix_mean": -20.609212239583332,
+      "intersection_minus_prefix_median": 0.0,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-1"
+    },
+    {
+      "blockers": 1,
+      "cells": 12,
+      "equal": 4,
+      "horizon": 256,
+      "intersection_better": 8,
+      "intersection_minus_prefix_mean": -45.67578125,
+      "intersection_minus_prefix_median": -3.0439453125,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-1"
+    },
+    {
+      "blockers": 1,
+      "cells": 12,
+      "equal": 4,
+      "horizon": 512,
+      "intersection_better": 8,
+      "intersection_minus_prefix_mean": -98.61783854166667,
+      "intersection_minus_prefix_median": -14.5576171875,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-1"
+    },
+    {
+      "blockers": 1,
+      "cells": 12,
+      "equal": 4,
+      "horizon": 1024,
+      "intersection_better": 8,
+      "intersection_minus_prefix_mean": -206.49772135416666,
+      "intersection_minus_prefix_median": -38.349609375,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-1"
+    },
+    {
+      "blockers": 1,
+      "cells": 12,
+      "equal": 4,
+      "horizon": 2048,
+      "intersection_better": 8,
+      "intersection_minus_prefix_mean": -422.66455078125,
+      "intersection_minus_prefix_median": -86.1650390625,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-1"
+    },
+    {
+      "blockers": 4,
+      "cells": 12,
+      "equal": 7,
+      "horizon": 128,
+      "intersection_better": 5,
+      "intersection_minus_prefix_mean": -19.510579427083332,
+      "intersection_minus_prefix_median": 0.0,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-4"
+    },
+    {
+      "blockers": 4,
+      "cells": 12,
+      "equal": 5,
+      "horizon": 256,
+      "intersection_better": 7,
+      "intersection_minus_prefix_mean": -43.421223958333336,
+      "intersection_minus_prefix_median": -1.119140625,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-4"
+    },
+    {
+      "blockers": 4,
+      "cells": 12,
+      "equal": 4,
+      "horizon": 512,
+      "intersection_better": 8,
+      "intersection_minus_prefix_mean": -96.09423828125,
+      "intersection_minus_prefix_median": -11.9619140625,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-4"
+    },
+    {
+      "blockers": 4,
+      "cells": 12,
+      "equal": 4,
+      "horizon": 1024,
+      "intersection_better": 8,
+      "intersection_minus_prefix_mean": -204.03759765625,
+      "intersection_minus_prefix_median": -35.71875,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-4"
+    },
+    {
+      "blockers": 4,
+      "cells": 12,
+      "equal": 4,
+      "horizon": 2048,
+      "intersection_better": 8,
+      "intersection_minus_prefix_mean": -420.1238606770833,
+      "intersection_minus_prefix_median": -81.94921875,
+      "intersection_worse": 0,
+      "scenario": "front-blockers-4"
+    }
+  ],
+  "rows_with_unlaunched_type": 80,
+  "scale_runs": 600,
+  "scenarios": {
+    "front-blockers-1": 1,
+    "front-blockers-4": 4
+  },
+  "status": "horizon/backlog scaling aggregation passed",
+  "total_episodes": 476160,
+  "unlaunched_type_occurrences": 80,
+  "zero_launch_convention": "Psi_U(0)=0 and unlaunched types contribute zero"
+}

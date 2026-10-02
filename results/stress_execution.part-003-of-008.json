@@ -1,0 +1,15 @@
+{
+  "cpu_seconds": 3.7913605660000003,
+  "episodes": 100352,
+  "peak_rss_kib": 98472,
+  "runs": 196,
+  "scenarios": [
+    "outcome-lag-64",
+    "single-blocker"
+  ],
+  "shard_count": 8,
+  "shard_index": 3,
+  "truth_seed_cells": 14,
+  "wall_seconds": 3.79603314000002,
+  "workers": 1
+}

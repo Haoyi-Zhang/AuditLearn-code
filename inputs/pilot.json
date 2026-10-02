@@ -1,0 +1,20 @@
+{
+  "purpose": "Discriminating finite-model pilot; not a held-out deployment evaluation",
+  "root_correlations": ["-3/4", "0", "3/4"],
+  "child_success_probabilities": ["1/4", "1/2", "3/4"],
+  "child_delays": [1, 2],
+  "waste_price": "1/4",
+  "horizon": 512,
+  "truth_indices": [0, 8, 20],
+  "audit_lags": [0, 16, 64],
+  "seeds": [111, 222, 333, 444],
+  "algorithms": ["prefix", "intersection", "completed", "plugin", "safe", "known", "product"],
+  "confidence_delta": 0.05,
+  "report_rule": "Launches in episode t return before episode t+lag+1; lag is the configured lag for root Y=1 or child success=1, and zero otherwise.",
+  "timing": "Within-episode physical arrivals and across-episode audit availability are different clocks.",
+  "statistics": "Parameter updates use audit marks only. Operational observations and scalar episode costs are not additional training inputs.",
+  "exclusions": "None. Empty confidence sets trigger a logged safe fallback. Every scheduled run is retained.",
+  "metrics": ["pseudo_regret", "expected_waste", "realized_cost", "confidence_exclusions", "safe_fallbacks", "prefix_debt", "unreturned_count"],
+  "selection": "Lexicographic ties for policy and model. No tuning after pilot outcomes. All 27 dictionary laws are checked by exact arithmetic; the three truth indices are a diagnostic subset, not a sampled workload.",
+  "limits": {"workers": 1, "memory_mib": 3584, "single_chunk_seconds": 120, "total_experiment_cpu_seconds": 600, "repair_reserve_cpu_seconds": 200}
+}

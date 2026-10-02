@@ -1,0 +1,71 @@
+{
+  "audit_order_checks": 96,
+  "completion_counting_checks": 26244,
+  "completion_diameter_lattice_checks": 209,
+  "completion_lattice_checks": 1973,
+  "coupling_checks": 19683,
+  "implementation_completion_distance_checks": 3320,
+  "independent_policy_triplets": 729,
+  "known_radius_binary_regression": {
+    "candidate_to_cover": "21/100",
+    "center": "1/2",
+    "corrected_direct_width": "3/25",
+    "cover_point": "3/5",
+    "cover_radius": "1/10",
+    "full_inflated_diameter": "11/50",
+    "radius": "1/100",
+    "selected_candidate": "39/100",
+    "true_to_candidate": "11/100"
+  },
+  "maximum_coupling_ratio": "49/72",
+  "oracle_matches": 27,
+  "outstanding_envelope_boundary_regressions": {
+    "n0": "0",
+    "n1": "0",
+    "u0_n9": "0",
+    "u_ge_n": "8"
+  },
+  "policy_values_exact": 729,
+  "prefix_counting_checks": 26244,
+  "prefix_debt_counterexample": {
+    "launches": 256,
+    "maximum_unreturned": 1,
+    "wrong_bound": 66.0
+  },
+  "product_oracle_regret_per_episode_positive_correlation": "63/128",
+  "product_policy": [
+    1,
+    2,
+    1
+  ],
+  "same_marginals_policies": {
+    "negative_correlation": [
+      1,
+      2,
+      1
+    ],
+    "positive_correlation": [
+      1,
+      2,
+      2
+    ]
+  },
+  "saturated_outstanding_envelope_checks": 8721,
+  "selection_information_checks": 5,
+  "selective_return_counterexample": {
+    "completed_success_fraction": "0",
+    "completion_set_distance": "0",
+    "launched": 80,
+    "observed": 40,
+    "prefix": 1,
+    "true_success_fraction": "1/2"
+  },
+  "single_blocker_exact_unresolved_mass_exposure": {
+    "decimal": 6.120438712817281,
+    "identity": "H_255",
+    "launches": 256
+  },
+  "status": "all finite checks passed; general proofs are separate mathematical arguments",
+  "unlaunched_mark_noninterference_checks": 9216,
+  "worlds_per_policy_value": 64
+}

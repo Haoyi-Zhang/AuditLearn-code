@@ -1,0 +1,32 @@
+{
+  "pairwise": [
+    {
+      "cells": 108,
+      "equal": 31,
+      "intersection_better": 69,
+      "intersection_minus_prefix_mean": -4.796748408564815,
+      "intersection_minus_prefix_median": -2.203125,
+      "intersection_worse": 8,
+      "scenario": "outcome-lag-64"
+    },
+    {
+      "cells": 108,
+      "equal": 27,
+      "intersection_better": 76,
+      "intersection_minus_prefix_mean": -65.08107277199075,
+      "intersection_minus_prefix_median": -14.486328125,
+      "intersection_worse": 5,
+      "scenario": "single-blocker"
+    }
+  ],
+  "scenarios": [
+    "outcome-lag-64",
+    "single-blocker"
+  ],
+  "single_blocker_max_prefix_debt": 511,
+  "single_blocker_max_unreturned": 1,
+  "status": "stress aggregation passed",
+  "stress_curve_rows": 24192,
+  "stress_runs": 1512,
+  "truth_seed_cells": 108
+}

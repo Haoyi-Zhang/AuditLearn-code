@@ -1,0 +1,3 @@
+scenario,cells,intersection_minus_prefix_mean,intersection_minus_prefix_median,intersection_better,equal,intersection_worse
+outcome-lag-64,108,-4.796748408564815,-2.203125,69,31,8
+single-blocker,108,-65.08107277199075,-14.486328125,76,27,5

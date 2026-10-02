@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "bib_entries": 85,
+  "reference_audit_rows": 85,
+  "network_audit_rows": 0,
+  "network_resolved": 0,
+  "passage_rows": 30,
+  "errors": [],
+  "warnings": [
+    "85 bibliography entries lack a network-audit row"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "partial_mode": false,
+  "methods": [
+    "completed",
+    "intersection",
+    "known",
+    "plugin",
+    "prefix",
+    "product",
+    "safe"
+  ],
+  "checks": {
+    "pilot_present": true,
+    "stress_present": true,
+    "scale_present": true,
+    "actual_core_methods_present": true,
+    "completed_label_is_negative_control_documented": true,
+    "pilot_seed_count_at_least_4": true,
+    "stress_truth_count_27": true,
+    "no_offgrid_result_files": true
+  },
+  "offgrid_files": [],
+  "note": "The artifact has pilot, stress, and scale campaigns only. 'completed' is the invalid returned-sample negative control, not completion-polytope confidence.",
+  "errors": []
+}

@@ -1,0 +1,22 @@
+{
+  "cpu_seconds": 5.237452482,
+  "episodes": 119040,
+  "horizons": [
+    128,
+    256,
+    512,
+    1024,
+    2048
+  ],
+  "peak_rss_kib": 96164,
+  "runs": 150,
+  "scenarios": [
+    "front-blockers-1",
+    "front-blockers-4"
+  ],
+  "shard_count": 4,
+  "shard_index": 0,
+  "truth_seed_cells": 3,
+  "wall_seconds": 5.254366124000001,
+  "workers": 1
+}
