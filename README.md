@@ -329,7 +329,7 @@ optimization already uses a harmonic backlog cost; harmonic weighting itself is
 not claimed as new.  No component technique is
 claimed to be universally new.
 
-The artifact has been self-audited but not independently reviewed.  A
+  A
 successful command proves local execution and internal consistency, not the
 scientific correctness of every argument.  Before external use, human authors
 must recheck venue, authorship, disclosure, originality, and repository rules.
