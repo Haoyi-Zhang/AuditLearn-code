@@ -28,6 +28,7 @@ sys.path[:0] = [str(ROOT / "src"), str(ROOT / "tests")]
 from model import models, POLICIES, ROOT_MARKS, CHILD_MARKS, evaluate_world, draw_index, exact_value
 from learning import AuditTape, confidence_constant, select
 from check_exact import check
+from campaign_checks import validate_stress, validate_scale
 
 
 def write_json(path: Path, value) -> None:
@@ -423,6 +424,7 @@ def merge_stress(output: Path, shard_count: int):
     for shard_index in range(shard_count):
         runs.extend(_read_csv(_part_path(output, "stress_runs", shard_index, shard_count)))
         curves.extend(_read_csv(_part_path(output, "stress_curves", shard_index, shard_count)))
+    validate_stress(runs, curves, conf)
     truth_rank = {str(x): i for i, x in enumerate(conf["truth_indices"])}
     seed_rank = {str(x): i for i, x in enumerate(conf["seeds"])}
     scenario_rank = {x["name"]: i for i, x in enumerate(conf["scenarios"])}
@@ -591,6 +593,7 @@ def merge_scale(output: Path, shard_count: int):
     rows = []
     for shard_index in range(shard_count):
         rows.extend(_read_csv(_part_path(output, "scale_runs", shard_index, shard_count)))
+    validate_scale(rows, conf)
     truth_rank = {str(x): i for i, x in enumerate(conf["truth_indices"])}
     seed_rank = {str(x): i for i, x in enumerate(conf["seeds"])}
     horizon_rank = {str(x): i for i, x in enumerate(conf["horizons"])}

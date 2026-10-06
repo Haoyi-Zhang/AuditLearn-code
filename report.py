@@ -13,6 +13,7 @@ import math
 from collections import defaultdict
 from pathlib import Path
 from statistics import mean, median, stdev
+from campaign_checks import validate_pilot, validate_stress, validate_scale
 
 ROOT = Path(__file__).resolve().parent
 
@@ -35,6 +36,7 @@ def summarize_pilot(results: Path):
     config = json.loads((ROOT / "inputs" / "pilot.json").read_text())
     runs = read_csv(results / "runs.csv")
     curves = read_csv(results / "curves.csv")
+    validate_pilot(runs, curves, config)
     expected = (
         len(config["truth_indices"])
         * len(config["audit_lags"])
@@ -214,6 +216,7 @@ def summarize_stress(results: Path):
     config = json.loads((ROOT / "inputs" / "stress.json").read_text())
     runs = read_csv(results / "stress_runs.csv")
     curves = read_csv(results / "stress_curves.csv")
+    validate_stress(runs, curves, config)
     expected = (
         len(config["truth_indices"])
         * len(config["seeds"])
@@ -387,6 +390,7 @@ def summarize_stress(results: Path):
 def summarize_scale(results: Path):
     config = json.loads((ROOT / "inputs" / "scaling.json").read_text())
     runs = read_csv(results / "scale_runs.csv")
+    validate_scale(runs, config)
     expected = (
         len(config["horizons"])
         * len(config["truth_indices"])

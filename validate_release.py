@@ -7,8 +7,6 @@ import csv
 import json
 import math
 import re
-import subprocess
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
@@ -120,9 +118,16 @@ def main() -> int:
         if not path.exists():
             errors.append(f"missing required document: {path.relative_to(PROJECT)}")
 
-    compile_proc = subprocess.run([sys.executable, "-m", "compileall", "-q", str(ROOT)], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
-    if compile_proc.returncode:
-        errors.append("Python compileall failed")
+    syntax_errors = []
+    for path in sorted(ROOT.rglob("*.py")):
+        if "__pycache__" in path.parts:
+            continue
+        try:
+            compile(path.read_bytes(), str(path), "exec")
+        except (SyntaxError, UnicodeError, OSError) as exc:
+            syntax_errors.append(f"{path.relative_to(ROOT)}: {exc}")
+    if syntax_errors:
+        errors.append(f"Python compilation failed: {syntax_errors}")
 
     csv_report = {}
     if results.exists():
@@ -163,7 +168,7 @@ def main() -> int:
         "status": "PASS" if not errors else "FAIL",
         "quick": args.quick,
         "results": results_display,
-        "compileall_returncode": compile_proc.returncode,
+        "syntax_check": {"mode": "in-memory compilation; no bytecode written", "errors": syntax_errors},
         "csv": csv_report,
         "bibliography": bib,
         "source_audit": src,

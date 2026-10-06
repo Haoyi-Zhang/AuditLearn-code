@@ -24,11 +24,21 @@ def run(cmd: list[str], log: Path) -> dict:
     cpu0 = time.process_time()
     before = resource.getrusage(resource.RUSAGE_CHILDREN)
     with log.open("w", encoding="utf-8") as f:
-        proc = subprocess.run(cmd, cwd=ROOT, stdout=f, stderr=subprocess.STDOUT, text=True)
+        try:
+            proc = subprocess.run(cmd, cwd=ROOT, stdout=f, stderr=subprocess.STDOUT,
+                                  text=True, timeout=120)
+            returncode = proc.returncode
+            timed_out = False
+        except subprocess.TimeoutExpired:
+            f.write("\nCommand exceeded the 120-second wall-time budget.\n")
+            returncode = 124
+            timed_out = True
     after = resource.getrusage(resource.RUSAGE_CHILDREN)
     return {
         "command": cmd,
-        "returncode": proc.returncode,
+        "returncode": returncode,
+        "timed_out": timed_out,
+        "timeout_seconds": 120,
         "wall_seconds": time.perf_counter() - start,
         "parent_cpu_seconds": time.process_time() - cpu0,
         "child_user_seconds": after.ru_utime - before.ru_utime,
@@ -54,10 +64,15 @@ def main() -> int:
         rec = run(cmd, logs / f"{len(records):02d}-{role}.log")
         rec["role"] = role
         records.append(rec)
+        if rec["returncode"]:
+            status = {"status": "FAIL", "scope": "quick" if args.skip_long else "full",
+                      "commands": records}
+            (out / "reproduction-command-report.json").write_text(json.dumps(status, indent=2) + "\n")
         return rec["returncode"] == 0
 
-    base = [sys.executable, "run.py"]
+    base = [sys.executable, "-B", "run.py"]
     commands: list[tuple[str, list[str]]] = [
+        ("campaign-keys", [sys.executable, "-B", "tests/check_campaign_keys.py", "--output", str(out / "campaign-key-inputs")]),
         ("check", base + ["check", "--output", str(out)]),
         ("pilot", base + ["pilot", "--output", str(out)]),
     ]
@@ -76,7 +91,7 @@ def main() -> int:
             (out / "reproduction-command-report.json").write_text(json.dumps(status, indent=2) + "\n")
             return records[-1]["returncode"]
 
-    report_cmd = [sys.executable, "report.py", "--results", str(out)]
+    report_cmd = [sys.executable, "-B", "report.py", "--results", str(out)]
     if args.skip_long:
         report_cmd += ["--skip-stress", "--skip-scale"]
     if not execute("report", report_cmd):
@@ -88,12 +103,12 @@ def main() -> int:
         return records[-1]["returncode"]
 
     checks = [
-        [sys.executable, "reviewer_requirements.py", "--results", str(out)] + (["--allow-partial"] if args.skip_long else []),
-        [sys.executable, "reviewer_invariants.py", "--results", str(out)],
-        [sys.executable, "validate_release.py", "--results", str(out)] + (["--quick"] if args.skip_long else []),
+        [sys.executable, "-B", "reviewer_requirements.py", "--results", str(out)] + (["--allow-partial"] if args.skip_long else []),
+        [sys.executable, "-B", "reviewer_invariants.py", "--results", str(out)],
+        [sys.executable, "-B", "validate_release.py", "--results", str(out)] + (["--quick"] if args.skip_long else []),
     ]
     for cmd in checks:
-        role = Path(cmd[1]).stem
+        role = Path(cmd[2]).stem
         if not execute(role, cmd):
             status = {"status": "FAIL", "scope": "quick" if args.skip_long else "full", "commands": records}
             (out / "reproduction-command-report.json").write_text(json.dumps(status, indent=2) + "\n")

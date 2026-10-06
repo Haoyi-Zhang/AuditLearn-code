@@ -14,7 +14,7 @@ Let
 be the full product-law domain on which every causal policy in `Pi` and the
 bounded centered episode cost are defined. The planning dictionary `Theta` is
 a finite subset of `Q`. For every type `i`, at most `b_i` marks can be launched
-in one episode and the absolute centered episode cost is at most `L`.
+in one episode and the centered episode cost lies in `[0,L]` throughout `Q`.
 
 Use the explicit conservative sensitivity
 

@@ -54,6 +54,13 @@ chronological launch index.  Audit time may depend on the mark and reports may
 arrive out of order.  Audits update the learner only at episode boundaries and
 do not alter physical dynamics in the episode that produced the mark.
 
+Reporting is nonanticipating: timing and payloads can depend on already
+launched marks, past history, and independent reporting coins, but not on
+unconsumed tape entries. Hence, conditional on the history before a launch,
+the next unused type-`i` mark still has law `p_i`. This fresh-mark condition is
+needed when fixed-policy launch occupancy is used conditionally in the regret
+proof; the simultaneous confidence event alone does not imply it.
+
 Before episode `t`, let
 
 - `N_it` be the number of earlier type-`i` launches;

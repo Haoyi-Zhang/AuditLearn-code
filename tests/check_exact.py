@@ -231,15 +231,19 @@ def check():
     completion_counting_checks = 0
     for U in (0, 1, 2, 7):
         for sequence in product(range(3), repeat=8):
-            n, lhs = 0, 0.0
+            n, lhs, unresolved_mass = 0, 0.0, 0.0
             for x in sequence:
                 if n == 0:
                     width = 1.0
                 else:
                     u = min(U, n)
                     width = min(1.0, 2*sqrt(1/n)+u/n)
+                    unresolved_mass += x*u/n
                 lhs += x*width
                 n += x
+            # Check the actual completion-exposure lemma before its coarser
+            # outstanding-count corollary. All launches in a batch share N.
+            assert lhs <= 2+4*sqrt(n)+unresolved_mass+1e-12
             harmonic = sum(1/k for k in range(1, max(0, n-2)+1))
             rhs = 2+4*sqrt(n)+U*harmonic
             assert lhs <= rhs+1e-12

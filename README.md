@@ -42,7 +42,9 @@ incurring exactly harmonic unresolved-mass exposure.
 
 The main result requires independent iid type tapes, a finite candidate dictionary
 containing the truth, a finite causal policy class, bounded launches, bounded
-centered cost, and a reliable full audit for every launched mark.  It does not
+centered cost, and a reliable full audit for every launched mark. Reporting may
+depend on launched marks and past history but must not reveal information about
+unconsumed tape entries. It does not
 cover destroyed/censored marks, arbitrary misspecification, correlated tapes,
 anonymous audits, a general efficient planning oracle, or a deployed decoder. A separate proved extension covers a declared typewise
 TV approximation radius using inflated confidence sets and the conservative
@@ -122,6 +124,9 @@ small generated TeX/data fragments after byte comparison.
 - `reproduce.sh` — documented deterministic shard-and-merge workflow.
 - `run.py` — bounded single-worker command-line runner.
 - `report.py` — deterministic aggregation and paper-fragment generator.
+- `campaign_checks.py` — exact configured run/checkpoint keys, cumulative
+  checkpoint monotonicity, and final-checkpoint/run reconciliation.
+- `tests/check_campaign_keys.py` — benign synthetic regressions for those gates.
 - `src/model.py` — finite fork semantics and an independently structured
   backward oracle.
 - `src/learning.py` — immutable audit views, confidence widths, completion
@@ -370,3 +375,9 @@ returned records as an iid sample; it is not a completion-polytope-only learner.
 The valid learners reported here are `prefix` and `intersection`. The
 known-radius dictionary extension is theory plus an exact arithmetic regression,
 not an empirical campaign.
+
+The release driver also runs the campaign-key regressions and limits each
+command to 120 seconds. The standalone-repository scientific workflow uses
+Ubuntu 24.04, a 900-second whole-run limit, and a 3584 MiB address-space cap;
+it retains raw outputs on success or failure. This workflow is distinct from
+the source/material integrity check and does not certify the hand proofs.
