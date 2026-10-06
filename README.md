@@ -381,3 +381,9 @@ command to 120 seconds. The standalone-repository scientific workflow uses
 Ubuntu 24.04, a 900-second whole-run limit, and a 3584 MiB address-space cap;
 it retains raw outputs on success or failure. This workflow is distinct from
 the source/material integrity check and does not certify the hand proofs.
+
+The current Ubuntu / CPython 3.12.14 run completed all 23 commands for pilot,
+stress, and scale, with no timeout or failing command. All 46 deterministic
+outputs match, normalizing only text line endings. Command elapsed times sum
+to 150.625436 seconds; this sum is not an end-to-end runtime. The current
+command/resource record is in `results/measurements/current-linux/`.
