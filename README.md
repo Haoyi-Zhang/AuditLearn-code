@@ -180,6 +180,28 @@ the truth index, a pending payload, an unlaunched child mark, future worlds, or
 the simulator's report queue.  Known-law and product-marginal reference
 policies and truth-exclusion diagnostics remain outside the selector.
 
+For `prefix`, `intersection`, and the `completed` negative control, the
+selector reuses a repeated type/law membership Boolean within one call for
+ordinary immutable numeric snapshots and float-law tuples. Other admitted
+objects retain their original predicate calls. Candidate/type traversal,
+first-encounter short-circuit order, all dictionary model identities, the
+`1e-12` slack, ordered feasible tuple, lexicographic choice, and safe fallback
+are unchanged; no cache is retained for another boundary or shared with an
+independent oracle. This is an implementation detail, not a measured speedup
+or a reduction in scientific model counts.
+
+The separate portable regression uses a test-local finite completion-vertex
+reference, without saved results or private paths:
+
+```sh
+python -B tests/check_selector_membership.py
+python -B -O tests/check_selector_membership.py
+```
+
+The scientific workflow runs these before the unchanged three-campaign
+reproduction. They are not extra empirical campaigns, and the retained
+23-command Linux receipt below predates these additional regression commands.
+
 ## Audit schedules
 
 The pilot uses outcome-dependent reporting.  A launched record from episode

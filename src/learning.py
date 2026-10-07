@@ -119,8 +119,33 @@ def select(method: str, tapes: list[AuditView], laws, optimal_values, optimal_po
         return optimal_policies[closest], None, False
     if method not in ("prefix", "intersection", "completed"):
         raise ValueError(f"Unknown learning method: {method}")
+    membership = {}
+
+    def accepts(k, i):
+        view = tapes[i]
+        predicate = view.accepts
+        row = laws[k]
+        law = row[i]
+        # Reuse only ordinary immutable numeric observations/laws. Other
+        # admitted objects keep the original calls, including mutable inputs.
+        cacheable = (
+            type(tapes) in (list, tuple) and type(laws) in (list, tuple)
+            and type(row) in (list, tuple) and type(view) is AuditView
+            and type(method) is str and type(c) in (int, float)
+            and type(view.n) is int and type(view.prefix) is int
+            and type(view.histogram) is tuple and type(view.prefix_histogram) is tuple
+            and all(type(x) is int for x in view.histogram + view.prefix_histogram)
+            and type(law) is tuple and all(type(x) is float for x in law)
+        )
+        if not cacheable:
+            return predicate(law, method, c)
+        key = (i, view, law)
+        if key not in membership:
+            membership[key] = predicate(law, method, c)
+        return membership[key]
+
     feasible = tuple(k for k in range(len(laws)) if all(
-        tapes[i].accepts(laws[k][i], method, c) for i in range(3)))
+        accepts(k, i) for i in range(3)))
     if not feasible:
         return 0, feasible, True
     k = min(feasible, key=lambda j: (optimal_values[j], j))
