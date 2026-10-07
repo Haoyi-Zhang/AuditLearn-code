@@ -316,8 +316,10 @@ are not additive or a whole-session trace.
 
 The experiments use common random worlds to reduce paired noise.  Unlaunched
 marks are sampled only for world scoring and remain hidden from learners.
-Reported sample standard deviations summarize four seeds; they are not
-independent workload confidence intervals.
+Pilot per-truth/lag sample standard deviations summarize four seeds.
+Stress and scaling table standard deviations pool 108 and 12 truth--seed
+cells, respectively, and include between-truth variation. These are
+descriptive spreads, not independent workload confidence intervals.
 
 Raw waste is not cost regret.  A known-law policy can intentionally launch
 work that is often unused because its latency benefit outweighs the waste
