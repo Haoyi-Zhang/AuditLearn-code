@@ -411,3 +411,18 @@ stress, and scale, with no timeout or failing command. All 46 deterministic
 outputs match, normalizing only text line endings. Command elapsed times sum
 to 150.625436 seconds; this sum is not an end-to-end runtime. The current
 command/resource record is in `results/measurements/current-linux/`.
+
+## Optional vector figures
+
+From the standalone artifact root, install the renderer dependencies if needed
+and generate the PDF figures:
+
+```sh
+python -m pip install "matplotlib==3.10.7"
+python -B scripts/plot_figures.py
+```
+
+Computer Modern is supplied by Matplotlib; rendering does not require TeX.
+
+This optional rendering step is separate from the scientific reproduction
+commands and works without a sibling paper directory.
