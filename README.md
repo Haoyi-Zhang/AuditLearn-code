@@ -1,9 +1,7 @@
 # Optimal asynchronous speculation: delayed-audit learning artifact
 
 This repository is the standalone proof and numerical artifact for
-**Learning Speculative Schedules from Selectively Delayed Audits**.  The
-repository basename is `optimal-asynchronous-speculation`; the name does not
-claim a universally optimal scheduler.
+**Learning Speculative Schedules from Selectively Delayed Audits**.
 
 The artifact studies a finite episodic scheduling model in which physical
 verification can affect the current episode while the full task record used for
@@ -55,9 +53,10 @@ campaign or inflated selector.
 
 Use a standard Python 3.10-or-newer interpreter on Linux.  Numerical code uses
 only the Python standard library.  No package installation, network access,
-external solver, child process, GPU library, model API, private dataset, or
-hidden cache is required.  Each runner uses one worker and imposes a 3584 MiB
-address-space cap.
+external solver, GPU library, model API, private dataset, or hidden cache is
+required. Each numerical runner uses one worker and imposes a 3584 MiB
+address-space cap. The release driver launches these commands sequentially in
+child processes.
 
 From this directory, the complete bounded workflow is available as:
 
@@ -111,7 +110,11 @@ python run.py smoke --output smoke-results
 It is not part of the reported campaigns.  Do not run the exact checks with
 Python's `-O` flag because assertions are part of the finite checker.
 
-All `run.py` commands accept an alternate output directory. Sharded campaign
+Use an alternate output directory for reproduction: `run.py` and `report.py`
+default to the retained `results/` directory and overwrite same-named outputs.
+The shell and release workflows default to `repro-results`; they also allow an
+existing directory and overwrite their command outputs and logs on rerun.
+Sharded campaign
 files include their zero-padded shard index and count; merge commands validate
 all expected files and write the canonical merged CSVs. Do not mix shards from
 different configurations or shard counts.
@@ -358,11 +361,6 @@ optimization already uses a harmonic backlog cost; harmonic weighting itself is
 not claimed as new.  No component technique is
 claimed to be universally new.
 
-  A
-successful command proves local execution and internal consistency, not the
-scientific correctness of every argument.  Before external use, human authors
-must recheck venue, authorship, disclosure, originality, and repository rules.
-
 ## Release reproduction path
 
 The complete release workflow is:
@@ -424,5 +422,8 @@ python -B scripts/plot_figures.py
 
 Computer Modern is supplied by Matplotlib; rendering does not require TeX.
 
-This optional rendering step is separate from the scientific reproduction
-commands and works without a sibling paper directory.
+This optional rendering step reads `results/width_curve.dat` and writes
+`figures/widths.pdf`. In a complete project with an existing sibling
+`paper/figures/` directory, it also overwrites `paper/figures/widths.pdf` with the
+same bytes. It is separate from scientific reproduction and also works in the
+standalone repository without a paper directory.
